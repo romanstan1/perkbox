@@ -1,0 +1,20 @@
+
+
+div.dropdown.btn-group {
+  width: 100%;
+}
+div.dropdown.btn-group button{
+  text-align: left;
+}
+div.dropdown.btn-group button span{
+  text-align: right;
+}
+div.panel {
+  margin: 10px 0;
+}
+h5 {
+  font-weight: 700;
+}
+#dropdown-basic {
+  margin-bottom: 14px;
+}

@@ -1,5 +1,7 @@
 import React, {Component} from "react"
-import {Button, ButtonGroup} from "react-bootstrap"
+import {Button, ButtonGroup, DropdownButton, MenuItem, ButtonToolbar} from "react-bootstrap"
+import Job from './Job'
+import CurrentStatus from './CurrentStatus'
 
 export default class App extends Component {
   constructor(props) {
@@ -9,14 +11,12 @@ export default class App extends Component {
       jobCount: 0
     }
   }
-
   handleJobCount(jobCount) {
     this.setState({jobCount})
   }
-
   render() {
     const {jobCount} = this.state
-
+    const jobArray = [...Array(jobCount)].map((val,i) => i + 1)
     return (
       <div>
         <ButtonGroup>
@@ -25,6 +25,16 @@ export default class App extends Component {
           <Button onClick={this.handleJobCount.bind(this, 2)} className={jobCount === 2 ? "selected" : null}>2</Button>
           <Button onClick={this.handleJobCount.bind(this, 3)} className={jobCount === 3 ? "selected" : null}>3</Button>
         </ButtonGroup>
+        {
+          jobCount?
+          jobArray.map((jobNumber, i) =>
+            <Job
+              key={i + jobNumber}
+              jobNumber={jobNumber}
+            />)
+          :
+          <CurrentStatus/>
+        }
       </div>
     )
   }
